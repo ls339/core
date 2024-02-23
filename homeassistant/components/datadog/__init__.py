@@ -25,6 +25,7 @@ DEFAULT_PORT = 8125
 DEFAULT_PREFIX = "hass"
 DEFAULT_RATE = 1
 DOMAIN = "datadog"
+SOURCE_TYPE_NAME = "Home Assistant"
 
 CONFIG_SCHEMA = vol.Schema(
     {
@@ -66,6 +67,7 @@ def setup(hass: HomeAssistant, config: ConfigType) -> bool:
                 f"entity:{event.data.get('entity_id')}",
                 f"domain:{event.data.get('domain')}",
             ],
+            source_type_name=SOURCE_TYPE_NAME,
         )
 
         _LOGGER.debug("Sent event %s", event.data.get("entity_id"))
